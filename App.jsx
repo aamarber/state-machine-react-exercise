@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-        
+        <StateMachine states={states}></StateMachine>
     </>
   )
 }
