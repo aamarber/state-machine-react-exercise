@@ -1,44 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import StateComponent from './StateComponent';
+import StateCreator from './StateCreator';
 
 export default function StateMachine({states}) {
 
-    const circleSize = 50;
-    let x = 0;
-    const topMargin = 10;    
+    const [statesInternal, setStates] = useState(states);
 
-    const calcCircleMargin = (circleIndex) => {
-        return 150 * circleIndex;
-    }
+    const stateSize = 50;
 
-    const calcCirclePosition = (circleIndex) => {
-        //index 0 -> return 50
-        //index 1 -> return 150 (margin)
-        return (circleSize * (circleIndex + 1)) + calcCircleMargin(circleIndex);
+    const createState = (stateName) => {
+        setStates([...statesInternal, {name: stateName}]);
     }
 
   return (
-    <svg>
-    {states.map((state, index) => {
-        return <>
-            <circle cx={calcCirclePosition(index)} cy={circleSize + topMargin} r={circleSize}></circle>
-            <text x={calcCirclePosition(index)} y={circleSize + topMargin}
-                textAnchor="middle"
-                alignmentBaseline="middle"
-                >
-                    {state.name}
-            </text>
-
-            {index === (states.length) - 1 ? '' 
-            : <line className='arrow' 
-                    x1={calcCirclePosition(index) + circleSize} 
-                    y1={topMargin + circleSize} 
-                    x2={calcCirclePosition(index + 1) - circleSize} 
-                    y2={topMargin + circleSize}
-                ></line>
-            }
-            
-        </>
-    })}
-    </svg>
+    <>
+        <StateCreator createState={createState}></StateCreator>
+        <svg width={(stateSize * statesInternal.length) * 4}>
+        {statesInternal.map((state, index) => {
+            return <>
+                <StateComponent stateSize={50} state={state} statePosition={index} isLast={index === statesInternal.length - 1}></StateComponent>
+            </>
+        })}
+        </svg>
+    </>
   )
 }

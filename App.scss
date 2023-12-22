@@ -1,5 +1,9 @@
-svg{
+body{
     width: 100%;
+}
+
+svg{
+    min-width: 100%;
     circle{
         fill: none;
         stroke: gray;
