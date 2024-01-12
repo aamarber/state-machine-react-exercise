@@ -17,9 +17,7 @@ export default function StateMachine({states}) {
         <StateCreator createState={createState}></StateCreator>
         <svg width={(stateSize * statesInternal.length) * 4}>
         {statesInternal.map((state, index) => {
-            return <>
-                <StateComponent stateSize={50} state={state} statePosition={index} isLast={index === statesInternal.length - 1}></StateComponent>
-            </>
+            return <StateComponent key={state.name} stateSize={50} state={state} statePosition={index} isLast={index === statesInternal.length - 1}></StateComponent>
         })}
         </svg>
     </>
