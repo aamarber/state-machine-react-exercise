@@ -3,10 +3,12 @@
 exports[`creates the state machine 1`] = `
 [
   <input
+    id="stateName"
     onChange={[Function]}
     type="text"
   />,
   <button
+    id="stateAdder"
     onClick={[Function]}
   >
     Add State

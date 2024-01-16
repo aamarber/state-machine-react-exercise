@@ -13,8 +13,8 @@ export default function StateCreator({createState}) {
 
   return (
     <>
-        <input type="text" onChange={(e) => setStateName(e.target.value)} />
-        <button onClick={clickAddState}>Add State</button>
+        <input type="text" id='stateName' onChange={(e) => setStateName(e.target.value)} />
+        <button id='stateAdder' onClick={clickAddState}>Add State</button>
     </>
   )
 }
